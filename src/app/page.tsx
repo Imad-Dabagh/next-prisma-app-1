@@ -90,9 +90,9 @@ export default function HomePage() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            ...data,
-            profilePicture:
-              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+            ...data
+            // profilePicture:
+            //   "https://i.pinimg.com/236x/a0/4d/84/a04d849cf591c2f980548b982f461401.jpg",
           }),
         })
         const json = await res.json()
@@ -126,7 +126,7 @@ export default function HomePage() {
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
                   <Image
-                    src={student.profilePicture || "/placeholder.svg"}
+                    src={student.profilePicture === "no_image" ? "https://i.pinimg.com/236x/a0/4d/84/a04d849cf591c2f980548b982f461401.jpg" : student.profilePicture}
                     alt={`${student.firstName} ${student.lastName}`}
                     width={80}
                     height={80}
@@ -163,7 +163,7 @@ export default function HomePage() {
                     <div className="space-y-2 mb-4">
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                        <span className="text-sm">Passed: {student.passed}</span>
+                        <span className="text-sm">Pass: {student.passed}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <div className="w-3 h-3 bg-red-500 rounded-full"></div>

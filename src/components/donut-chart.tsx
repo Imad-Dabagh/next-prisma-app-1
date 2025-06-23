@@ -1,3 +1,10 @@
+type DonutChartProps = {
+  passed: number
+  redo: number
+  pending: number
+  size?: number
+}
+
 export function DonutChart({ passed, redo, pending, size = 80 }: DonutChartProps) {
   const total = passed + redo + pending
 

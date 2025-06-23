@@ -12,7 +12,8 @@ interface RouteContext {
 
 // Update user
 export async function PUT(req: NextRequest, context: RouteContext) {
-  const userId = parseInt(context.params.id);
+  const _params = await context.params
+  const userId = parseInt(_params.id);
   const data = await req.json();
 
   const updatedUser = await prisma.user.update({
@@ -28,7 +29,8 @@ export async function PUT(req: NextRequest, context: RouteContext) {
 
 // Delete user
 export async function DELETE(_req: NextRequest, context: RouteContext) {
-  const userId = parseInt(context.params.id);
+  const _params = await context.params
+  const userId = parseInt(_params.id);
 
   const deletedUser = await prisma.user.delete({
     where: { id: userId },
